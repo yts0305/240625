@@ -1,0 +1,60 @@
+1. 정적변수와 동적 변수
+클래스에서 static 키워드가 붙은 변수 와 붙지 않은 변수의
+메모리 할당에 따른 차이를 서술 하세요.
+static이 붙은 변수는 미리 메모리에 할당하는 변수이고, 붙지 않은 변수는 이후에 변당하는 함수이다.
+
+2. 유니티에서 뛰어가는 중인지 아닌지 판단 하려면 어떤 자료형을 써야하고 왜 써야 하는지 상세하게 적으시오
+bool
+이유는 뛰는지 안뛰어가는지를 true와 flase로 구분하여 달리기 사용시 입력하는 키를 입력 받으면 true를 호출하여 뛰어가는 것을 인지시킬수 있고,
+반대로 달리기 키에서 손을 땠을 때를 인지하여 flase를 호출하여 뛰어가는 중인지 아닌지 를 판단할 수 있다.
+
+3. 유니티에서 이펙트의 자료형은 무엇인가?
+ParticleSystem
+
+4.C#에서 재귀 함수는 자기 자신의 함수를 호출하는 함수이다.
+다음을 코딩하세요.
+실행 예) 
+2의 몇승을 입력 할까요?
+입력 : 8
+출력 256 재귀 함수로 구현 하세요
+
+ internal class Class1
+ {
+     public static int Fact(int num, int cnt)
+     {
+
+         if (cnt == 0)
+         {
+             return 1;
+         }
+         return num * Fact(num, --cnt);
+
+     }
+
+     public static void Main(string[] args) 
+     {
+         int cnt = 0;
+
+         Console.Write("2의 몇승을 입력 할까요?");
+         cnt = int.Parse(Console.ReadLine());
+
+         Console.WriteLine(Fact(2,cnt));
+
+     }
+ }
+
+5. 유니티에서 프리팹을 왜 쓰는지 사용 쓰임새를 서술하세요.
+
+프리팹 사용시 하나의 객체의 원본을 프리팹에 저장하여 씬에서 자유롭게 호출하여 사용이 가능하다. 또한 이렇게 사용시 원본에 있는 프리팹의 객체만 수정하여도 이후 씬에 있는 객체 모두가
+수정되기 때문에 사용하기 편리하다.
+
+6. 유니티에서 프리팹을 동적 생성(인스턴스) 하는 함수에 대해 적고
+전달 인자의 값의 순서와 내용에 대해 적으세요
+
+public GameObject bulletPrefab;
+public Transform firePos;
+
+Instantiate(bulletPrefab, firePos.position,firePos.rotation);
+
+우선 게임오브젝트에 bulletPrefab와 트랜스폼에 firePos 예로 선언한뒤 이후 Instantiate(함수, 트랜스폼의 firePos. 좌표, firePos의 바라보는 방향을 호출)
+이후 조건이 발동되면 위의 명령대로 프리팹이 동적 생성된다.
